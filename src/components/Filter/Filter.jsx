@@ -5,7 +5,12 @@ export function Filter({ value, onChange }) {
     return (
         <Label>
             Find contacts by name
-            <Input type="text" value={value} onChange={onChange} />
+            <Input
+                placeholder="Find something..."
+                type="text"
+                value={value}
+                onChange={onChange}
+            />
         </Label>
     );
 }

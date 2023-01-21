@@ -7,15 +7,11 @@ import {
     ContactList,
     Filter,
 } from 'utils/allComponents';
+import { Message } from './App.styled';
 
 export class App extends Component {
     state = {
-        contacts: [
-            { id: nanoid(), name: 'Rosie Simpson', number: '459-12-56' },
-            { id: nanoid(), name: 'Hermione Kline', number: '443-89-12' },
-            { id: nanoid(), name: 'Eden Clements', number: '645-17-79' },
-            { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
-        ],
+        contacts: [],
         filter: '',
     };
 
@@ -87,7 +83,6 @@ export class App extends Component {
 
     render() {
         const { filter, contacts } = this.state;
-        const filterContact = this.visibleContact();
         return (
             <>
                 <Section title="Phonebook">
@@ -99,11 +94,11 @@ export class App extends Component {
                     )}
                     {contacts.length > 0 ? (
                         <ContactList
-                            contacts={filterContact}
+                            contacts={this.visibleContact()}
                             deleteContact={this.deleteContact}
                         />
                     ) : (
-                        Report.info('Contact list is empty!', ' ', 'Ok')
+                        <Message>Contact list is empty...</Message>
                     )}
                 </Section>
             </>
